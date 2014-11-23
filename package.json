@@ -1,0 +1,21 @@
+{
+  "name": "dropwizard-viz",
+  "version": "0.1.0",
+  "author": "Kim A. Betti <kim@developer-b.com>",
+  "description": "Dropwizard Viz (Chrome extension)",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimble/dropwizard-viz.git"
+  },
+  "devDependencies": {
+    "gulp-convert": "^0.1.0",
+    "run-sequence": "~1.0.2",
+    "gulp-clean": "~0.3.1",
+    "gulp": "~3.8.10",
+    "gulp-zip": "~2.0.2",
+    "gulp-jshint": "^1.9.0",
+
+    "minimist": "1.1.0"
+  }
+}

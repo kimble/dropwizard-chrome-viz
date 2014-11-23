@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Health Check Dashboard</title>
+
+    <link href="../third-party/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../third-party/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            font-family: 'Gochi Hand', Cursive;
+            font-size: 2em;
+        }
+
+        .application-header {
+            fill: black;
+            font-variant: small-caps;
+            font-size: 1.6em;
+        }
+
+        .health-check.healthy .message  {
+            font-size: 0.8em;
+            fill: #555;
+        }
+
+        .health-check.unhealthy .message {
+            font-size: 0.8em;
+            fill: white;
+        }
+
+        .path.underlined {
+            stroke-antialiasing: true;
+        }
+
+        .health-check {
+            opacity: 0;
+            -webkit-animation: fadein ease-in 1;
+            -webkit-animation-fill-mode: forwards;
+            -webkit-animation-duration: 1000ms;
+
+            font-size: 0.8em;
+        }
+
+        .application {
+            opacity: 1;
+            -webkit-transition: opacity 0.4s ease-in;
+        }
+
+        .application.unresponsive {
+            opacity: 0.2;
+        }
+
+        .font-awesome {
+            font-family: FontAwesome;
+        }
+
+
+        /* Red background indicating un-healthy health check */
+        .unhealthy-check-background {
+            fill: rgb(107, 17, 17);
+        }
+
+        .health-check.healthy .unhealthy-check-background {
+            visibility: hidden;
+        }
+
+        /* Animations */
+        @-webkit-keyframes fadein {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div>
+
+    <svg id="scene"></svg>
+
+
+
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addSiteModal" style="margin-left: 10px">
+        Add health check
+    </button>
+
+    <p style="padding-left: 10px;">Ps! Double click on a header to remove it!</p>
+
+
+    <div class="modal fade" id="addSiteModal" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Add health check</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="uri" class="control-label">URI:</label>
+                            <input type="text" class="form-control" id="uri" placeholder="http://.../admin/healthcheck">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="control-label">Name:</label>
+                            <input type="text" class="form-control" id="name" value="">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="submitHealthCheck" type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../third-party/jquery.js"></script>
+<script src="../third-party/d3.min.js"></script>
+<script src="../third-party/bootstrap/js/bootstrap.min.js"></script>
+<script src="../javascript/health-check-interface.js"></script>
+
+
+</body>
+</html>

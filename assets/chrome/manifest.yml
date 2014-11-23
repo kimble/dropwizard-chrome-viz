@@ -1,0 +1,30 @@
+name: Dropwizard Viz
+description: Pretty Dropwizard health check and instrumentation
+
+version: '0.1'
+manifest_version: 2
+#options_page: html/options.html
+
+
+#browser_action:
+#  default_icon: assets/images/icon_19x19_grey.png
+#  default_title: Dropwizard Viz
+#  default_popup: html/popup.html
+
+
+permissions:
+  - tabs
+  - storage
+  - "http://*/admin/healthcheck"
+  - "https://*/admin/healthcheck"
+
+
+#icons:
+#  16:   assets/images/icon_16x16.png
+#  48':  assets/images/icon_48x48.png
+#  128': assets/images/icon_128x128.png
+
+browser_action:
+  default_title: Dropwizard Viz
+  default_popup: html/popup.html
+
