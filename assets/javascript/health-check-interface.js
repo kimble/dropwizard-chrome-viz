@@ -82,8 +82,14 @@
         var height = window.innerHeight - 95;
 
         var columnWidth = 280;
-        var columnHeight = 50;
         var columnSpace = 20;
+        var columnCount = Math.floor(width / (columnWidth + columnSpace));
+
+        var rowSpacing = 100;
+        var healthIndicatorHeight = 50;
+
+
+
 
         var svg = scene.attr({ width: width, height: height })
             .append("g")
@@ -125,6 +131,16 @@
 
 
         return function(state) {
+            Object.keys(state).forEach(function(index) {
+                var application = state[index];
+                var columnNumber = (index % columnCount);
+                var rowNumber = Math.floor((index / columnCount));
+
+                application.x = ((columnWidth + columnSpace) * columnNumber);
+                application.y = rowNumber == 0 ? 0 : state[index - columnCount].y + (state[index - columnCount].health.length * healthIndicatorHeight) + rowSpacing;
+            });
+
+
 
             var sortedByName = d3.values(state).sort(function(a, b) {
                 return d3.ascending(a.name, b.name);
@@ -137,7 +153,9 @@
             var enteringApplication = application.enter()
                 .append("g")
                     .attr("class", "application")
-                    .attr("transform", function(d, i) { return translateByXAndY(i * (columnWidth + columnSpace), 0 ); });
+                    .attr("transform", function(d, i) {
+                        return translateByXAndY(width, height);
+                });
 
             enteringApplication.append("text")
                 .attr("x", 20)
@@ -157,9 +175,7 @@
                 .duration(1500)
                 .delay(function(d, i) { return i * 50; })
                 .ease('elastic')
-                .attr('transform', function(d, i) {
-                    return translateByXAndY(i * (columnWidth + columnSpace), 0)
-                });
+                .attr('transform', translate);
 
             // Remove application
             application.exit()
@@ -242,7 +258,7 @@
                         return d.healthy ? "black" : "white";
                     })
                     .attr('transform', function(d, i) {
-                        return translateByXAndY(0, 40 + (i * columnHeight))
+                        return translateByXAndY(0, 40 + (i * healthIndicatorHeight))
                     });
 
 
@@ -299,10 +315,10 @@
 
     function initializeFromStorage() {
         chrome.storage.local.get({ healthchecks: {} }, function(result) {
-            Object.keys(result.healthchecks).reverse().forEach(function(name, index) {
+            Object.keys(result.healthchecks).forEach(function(name, index) {
                 setTimeout(function() {
                     initialize(name, result.healthchecks[name]);
-                }, index * 800);
+                }, index * 500);
             });
         });
     }
