@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Instrumentation</title>
+
+    <link href="../third-party/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../third-party/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Gochi Hand';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Gochi Hand'), local('GochiHand-Regular'), url(../fonts/GochiHand-Regular.ttf) format('truetype');
+        }
+
+        body {
+            font-family: 'Gochi Hand', Cursive;
+            font-size: 2em;
+        }
+
+        .application-header {
+            fill: black;
+            font-variant: small-caps;
+            font-size: 1.6em;
+        }
+
+        .path.underlined {
+            stroke-antialiasing: true;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+<div>
+    <svg id="scene" style="width: 1000px; height: 800px"></svg>
+</div>
+
+
+
+<script src="../third-party/jquery.js"></script>
+<script src="../third-party/d3.min.js"></script>
+<script src="../third-party/bootstrap/js/bootstrap.min.js"></script>
+<script src="../javascript/instrumentation/jvm-heap.js"></script>
+<script src="../javascript/instrumentation.js"></script>
+
+
+</body>
+</html>
