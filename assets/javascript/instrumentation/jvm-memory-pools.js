@@ -24,14 +24,43 @@ window.jvmMemoryPoolVisualizer = function(d3scene, pos) {
     var poolHeight = 50;
 
 
+
+
+
+
     function draw(memoryPoolGauges) {
         console.log("Memory pool gauges: ", memoryPoolGauges);
+
+
+        // Draw help
+        var helpGroupEntering = d3scene.selectAll('.pool-help')
+            .data([0])
+            .enter()
+            .append("g")
+                .attr("class", "pool-help help")
+                .attr("transform", translateByXAndY(pos.x - 30, pos.y - 10));
+
+
+        helpGroupEntering.append("path")
+            .attr("fill", "transparent")
+            .attr("d", "M10 0 l-10 0 l0 " + (10 + (memoryPoolGauges.length * poolHeight)) + ' l10 0');
+
+        helpGroupEntering.append("text")
+            .attr("transform", translateByXAndY(-10, (memoryPoolGauges.length * poolHeight) / 2) + "rotate(-90)")
+            .attr("text-anchor", "middle")
+            .text("Memory pools");
+
+
+
+
 
         var memoryPool = d3scene.selectAll('.memory-pool-gauge')
             .data(memoryPoolGauges, extractAttribute("name"));
 
 
-        // Enter
+
+
+        // Enter pools
         var enterMemoryPool = memoryPool.enter()
             .append("g")
             .attr("class", "memory-pool-gauge")
@@ -43,6 +72,7 @@ window.jvmMemoryPoolVisualizer = function(d3scene, pos) {
             .attr("transform", function() {
                 return translateByXAndY(0, (poolHeight / 2)) + "rotate(0)";
             });
+
 
 
         chartGroup.append("rect")

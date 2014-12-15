@@ -21,8 +21,8 @@ var run = (function(uri) {
 
     var scene = d3.select("#scene");
 
-    var visualizeJvmHeap = jvmMemoryPoolVisualizer(scene, { x: 20, y: 20} );
-    var sumJvmHeap = jvmMemorySummary(scene, { x: 190, y: 40 });
+    var visualizeJvmHeap = jvmMemoryPoolVisualizer(scene, { x: 80, y: 50} );
+    var sumJvmHeap = jvmMemorySummary(scene, { x: 280, y: 50 });
 
 
 

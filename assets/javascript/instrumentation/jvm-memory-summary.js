@@ -56,8 +56,34 @@ window.jvmMemorySummary = function(d3scene, pos) {
     }
 
 
+
+
+
     function draw(data) {
         console.log("Summary: ", data);
+
+
+        // Draw help
+        var helpGroupEntering = d3scene.selectAll('.memory-usage-help')
+            .data([0])
+            .enter()
+            .append("g")
+            .attr("class", "memory-usage-help help")
+            .attr("transform", translateByXAndY(pos.x + 30, pos.y - 45));
+
+
+        helpGroupEntering.append("path")
+            .attr("fill", "transparent")
+            .attr("d", "M" + width + " 20 l10 0 l0 " + (data.length * (width+70)) + ' l-10 0');
+
+        helpGroupEntering.append("text")
+            .attr("transform", translateByXAndY(width + 20, (data.length * (width+70)) / 2) + "rotate(90)")
+            .attr("text-anchor", "middle")
+            .text("Memory usage summary");
+
+
+
+
 
         var memoryTypeSummary = d3scene.selectAll('.memory-type-summary')
             .data(data, extractAttribute("name"));
