@@ -32,7 +32,6 @@
 
         text.header {
             fill: #555;
-            text-anchor: middle;
         }
 
         text.memory-percentage {
@@ -56,6 +55,10 @@
             stroke: #555;
         }
 
+        .hidden {
+            visibility: hidden;
+        }
+
     </style>
 </head>
 <body>
@@ -73,6 +76,7 @@
 <script src="../third-party/bootstrap/js/bootstrap.min.js"></script>
 <script src="../javascript/instrumentation/jvm-memory-pools.js"></script>
 <script src="../javascript/instrumentation/jvm-memory-summary.js"></script>
+<script src="../javascript/instrumentation/jvm-threads.js"></script>
 <script src="../javascript/instrumentation.js"></script>
 
 

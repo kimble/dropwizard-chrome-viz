@@ -23,6 +23,7 @@ var run = (function(uri) {
 
     var visualizeJvmHeap = jvmMemoryPoolVisualizer(scene, { x: 80, y: 50} );
     var sumJvmHeap = jvmMemorySummary(scene, { x: 280, y: 50 });
+    var threadSummary = jvmThreadSummary(scene, { x: 90, y: 440 });
 
 
 
@@ -33,6 +34,7 @@ var run = (function(uri) {
 
         visualizeJvmHeap(data);
         sumJvmHeap(data);
+        threadSummary(data);
     }
 
 

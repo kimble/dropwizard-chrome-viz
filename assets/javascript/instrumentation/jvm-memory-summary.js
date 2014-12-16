@@ -99,6 +99,7 @@ window.jvmMemorySummary = function(d3scene, pos) {
 
         enteringApplication.append("text")
             .attr("class", "header")
+            .attr("text-anchor", "middle")
             .attr("transform", translateByXAndY(width / 2, 0))
             .text(extractAttribute("name"));
 
